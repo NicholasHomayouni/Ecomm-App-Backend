@@ -9,6 +9,7 @@ public class EcommAppBackendApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(EcommAppBackendApplication.class, args);
+		// test
 	}
 
 }
