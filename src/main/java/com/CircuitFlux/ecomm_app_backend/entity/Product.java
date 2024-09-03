@@ -13,7 +13,7 @@ public class Product {
     private Integer productId;
 
     @Column(name = "product_name")
-    private String productName;
+    private String name;
 
     @Column(name = "price")
     private double price;
@@ -30,9 +30,9 @@ public class Product {
 
     public Product() {}
 
-    public Product(Integer productId, String productName, double price, Integer quantity, String description, Date creationDate) {
+    public Product(Integer productId, String name, double price, Integer quantity, String description, Date creationDate) {
         this.productId = productId;
-        this.productName = productName;
+        this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.description = description;
@@ -45,5 +45,13 @@ public class Product {
 
     public void setProductId(Integer productId) {
         this.productId = productId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
