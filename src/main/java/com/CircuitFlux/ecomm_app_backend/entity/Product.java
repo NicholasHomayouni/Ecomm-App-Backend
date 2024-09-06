@@ -28,15 +28,23 @@ public class Product {
     @Temporal(TemporalType.TIMESTAMP)
     private Date creationDate;
 
+    @Column(name = "category")
+    private String category;
+
+    @Column(name = "subcategory")
+    private String subcategory;
+
     public Product() {}
 
-    public Product(Integer productId, String name, double price, Integer quantity, String description, Date creationDate) {
+    public Product(Integer productId, String name, double price, Integer quantity, String description, Date creationDate, String category, String subcategory) {
         this.productId = productId;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.description = description;
         this.creationDate = new Date();
+        this.category = category;
+        this.subcategory = subcategory;
     }
 
     public Integer getProductId() {
@@ -77,5 +85,21 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(String subcategory) {
+        this.subcategory = subcategory;
     }
 }
