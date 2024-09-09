@@ -34,9 +34,12 @@ public class Product {
     @Column(name = "subcategory")
     private String subcategory;
 
+    @Column(name = "image_url")
+    private String imageUrl;
+
     public Product() {}
 
-    public Product(Integer productId, String name, double price, Integer quantity, String description, Date creationDate, String category, String subcategory) {
+    public Product(Integer productId, String name, double price, Integer quantity, String description, Date creationDate, String category, String subcategory, String imageUrl) {
         this.productId = productId;
         this.name = name;
         this.price = price;
@@ -45,6 +48,7 @@ public class Product {
         this.creationDate = new Date();
         this.category = category;
         this.subcategory = subcategory;
+        this.imageUrl = imageUrl;
     }
 
     public Integer getProductId() {
@@ -101,5 +105,13 @@ public class Product {
 
     public void setSubcategory(String subcategory) {
         this.subcategory = subcategory;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
