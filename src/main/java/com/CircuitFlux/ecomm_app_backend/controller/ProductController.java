@@ -36,9 +36,15 @@ public class ProductController {
         return new ResponseEntity<>(marineFishSubs, HttpStatus.OK);
     }
 
+    @GetMapping("/freshwaterfish/{subcategory}")
+    public ResponseEntity<List<Product>> getFreshwaterFishBySubcategory(@PathVariable String subcategory) {
+        List<Product> freshwaterFishSubs = productRepo.findByCategoryAndSubcategory("freshwater fish", subcategory);
+        return new ResponseEntity<>(freshwaterFishSubs, HttpStatus.OK);
+    }
+
     @GetMapping("/freshwaterfish")
-    public ResponseEntity<List<Product>> getAllFreshwaterFish() {
-        List<Product> freshwaterFish = productRepo.findByCategory("freshwater fish");
+    public ResponseEntity<List<String>> getAllFreshwaterFish() {
+        List<String> freshwaterFish = productRepo.findDistinctSubcategoriesByCategory("freshwater fish");
         return new ResponseEntity<>(freshwaterFish, HttpStatus.OK);
     }
 }
