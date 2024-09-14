@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -34,6 +35,16 @@ public class ProductController {
     public ResponseEntity<List<Product>> getMarineFishBySubcategory(@PathVariable String subcategory) {
         List<Product> marineFishSubs = productRepo.findByCategoryAndSubcategory("marine fish", subcategory);
         return new ResponseEntity<>(marineFishSubs, HttpStatus.OK);
+    }
+
+    @GetMapping("/{productId}")
+    public ResponseEntity<Product> getProductById(@PathVariable Integer productId) {
+        Optional<Product> product = productRepo.findById(productId);
+        if (product.isPresent()) {
+            return new ResponseEntity<>(product.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/freshwaterfish/{subcategory}")
