@@ -19,6 +19,12 @@ public class ProductController {
         this.productRepo = productRepo;
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<List<Product>> searchProducts(@RequestParam("query") String query) {
+        List<Product> products = productRepo.findByNameContainingIgnoreCase(query);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
     @GetMapping("/all")
     public ResponseEntity<List<Product>> getAllProducts() {
         List<Product> products = productRepo.findAll();

@@ -16,4 +16,6 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     @Query("SELECT DISTINCT p.subcategory FROM Product p WHERE p.category = :category")
     List<String> findDistinctSubcategoriesByCategory(@Param("category") String category);
+
+    List<Product> findByNameContainingIgnoreCase(String query);
 }
