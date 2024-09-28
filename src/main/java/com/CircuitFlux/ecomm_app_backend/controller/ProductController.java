@@ -19,6 +19,13 @@ public class ProductController {
         this.productRepo = productRepo;
     }
 
+
+    @GetMapping("/suggestions")
+    public ResponseEntity<List<Product>> getSearchSuggestions(@RequestParam String query) {
+        List<Product> suggestions = productRepo.findByNameContainingIgnoreCase(query);
+        return new ResponseEntity<>(suggestions, HttpStatus.OK);
+    }
+
     @GetMapping("/search")
     public ResponseEntity<List<Product>> searchProducts(@RequestParam("query") String query) {
         List<Product> products = productRepo.findByNameContainingIgnoreCase(query);
